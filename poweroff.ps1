@@ -1,4 +1,4 @@
-Add-Type -AssemblyName PresentationCore,PresentationFramework
+﻿Add-Type -AssemblyName PresentationCore,PresentationFramework
 
 $shutdownCommand = "shutdown /s /f /t 0"
 

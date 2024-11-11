@@ -1,3 +1,1 @@
-. .\config.ps1
-
-Start-Process "C:\Users\$UserName\AppData\Local\Postman\Postman.exe"
+﻿Start-Process "C:\Users\$env:USERNAME\AppData\Local\Postman\Postman.exe"
