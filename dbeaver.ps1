@@ -1,0 +1,1 @@
+Start-Process "C:\Users\$env:USERNAME\AppData\Local\DBeaver\dbeaver.exe"
