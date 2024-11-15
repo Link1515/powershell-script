@@ -1,4 +1,4 @@
-# 調整 ExecutionPolicy 等級到 RemoteSigned
+﻿# 調整 ExecutionPolicy 等級到 RemoteSigned
 Set-ExecutionPolicy RemoteSigned -Force
 
 # 安裝 Chocolatey
@@ -6,6 +6,23 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 # 安裝 windows terminal
 choco install microsoft-windows-terminal -y
+
+# 設定 windows terminal 快捷鍵
+$shortcutPath = "$env:USERPROFILE\Desktop\wt.exe.lnk"
+$targetPath = "$env:LOCALAPPDATA\Microsoft\WindowsApps\wt.exe" 
+
+if (!(Test-Path $shortcutPath)) {
+    $shell = New-Object -ComObject WScript.Shell
+    $shortcut = $shell.CreateShortcut($shortcutPath)
+    $shortcut.TargetPath = $targetPath
+    $shortcut.Save()
+}
+
+$shell = New-Object -ComObject WScript.Shell
+$shortcut = $shell.CreateShortcut($shortcutPath)
+$shortcut.Hotkey = "CTRL+ALT+T"
+$shortcut.Save()
+
 # 安裝 oh-my-posh
 choco install oh-my-posh -y
 $themeDownloadUrl = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/blue-owl.omp.json"
@@ -17,7 +34,7 @@ New-Item -Path $PROFILE -Type File -Force
 
 # 設定 PowerShell 的 ProgressPreference, TLS 1.2 與 PSReadLine 快速鍵
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables#progresspreference
-@'
+@"
 # 修正 PowerShell 關閉進度列提示
 # $ProgressPreference = 'SilentlyContinue'
 
@@ -44,7 +61,7 @@ If (Test-Path Alias:wget) {Remove-Item Alias:wget}
 
 # 使用 oh-my-posh
 oh-my-posh init pwsh --config $themePath | Invoke-Expression
-'@ | Out-File $PROFILE
+"@ | Out-File $PROFILE
 
 . $PROFILE
 
