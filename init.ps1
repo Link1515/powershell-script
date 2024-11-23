@@ -65,8 +65,8 @@ oh-my-posh init pwsh --config $themePath | Invoke-Expression
 
 . $PROFILE
 
-# 安装常用字型
-choco install sourcecodepro -y
+# 安裝常用字型
+choco install nerd-fonts-sourcecodepro -y
 
 # 安裝 git
 choco install git -y
@@ -98,17 +98,13 @@ git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 
 # 安裝常用軟體
-choco install wget neovim vscode docker-desktop dbeaver postman line -y
+choco install wget neovim vscode docker-desktop dbeaver postman -y
 
 # 安裝 wsl
 wsl --install
 
-# 安裝 nvm 與 node lts
+# 安裝 nvm
 choco install nvm.portable -y
-refreshenv
-nvm install lts
-nvm use lts
-npm i -g pnpm
 
 # 安裝 PowerShell core
 choco install powershell-core -y
