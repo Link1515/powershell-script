@@ -73,23 +73,6 @@ choco install git -y
 # Chocolatey 安裝 Git 後雖然有註冊 PATH 環境變數，但目前工作階段並沒有註冊
 $env:Path += ';C:\Program Files\Git\cmd'
 
-# 設定預設 Git Alias
-git config --global alias.cm   "commit --amend -C HEAD"
-git config --global alias.co   checkout
-git config --global alias.st   status
-git config --global alias.sts  "status -s"
-git config --global alias.br   branch
-git config --global alias.ll   "log --pretty=format:'%C(yellow)%h%C(reset) %ad [%C(cyan)%an%C(reset)]%C(yellow)%d%C(reset) %s %C(green)(%cr)%C(reset)' --date=short"
-git config --global alias.lg   "log --graph --pretty=format:'%C(yellow)%h%C(reset) %ad [%C(cyan)%an%C(reset)]%C(yellow)%d%C(reset) %s' --abbrev-commit --date=short"
-git config --global alias.alias "config --get-regexp ^alias\."
-git config --global alias.ignore "!gi() { curl -sL https://www.gitignore.io/api/\$@ ;}; gi"
-git config --global alias.iac  "!giac() { git init && git add . && git commit -m 'Initial commit' ;}; giac"
-git config --global alias.rc  "!grc() { git reset --hard && git clean -fdx ;}; read -p 'Do you want to run the following commands:\ngit reset --hard && git clean -fdx\n\n(Y/N) ' answer && [[ $answer == [Yy] ]] && grc"
-
-# 直接設定 Git 預設 user.name 與 user.email
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
-
 # 安裝常用軟體
 choco install wget neovim vscode docker-desktop dbeaver postman -y
 
