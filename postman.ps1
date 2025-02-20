@@ -1,1 +1,0 @@
-﻿Start-Process "C:\Users\$env:USERNAME\AppData\Local\Postman\Postman.exe"
