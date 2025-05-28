@@ -14,11 +14,14 @@ Set-PSReadlineKeyHandler -Chord ctrl+e -Function EndOfLine
 # 設定按下 Ctrl+a 可以移動游標到最前面
 Set-PSReadlineKeyHandler -Chord ctrl+a -Function BeginningOfLine
 
-function hosts { nvim c:\windows\system32\drivers\etc\hosts }
-
 # 移除內建的 curl 與 wget 命令別名
 If (Test-Path Alias:curl) {Remove-Item Alias:curl}
 If (Test-Path Alias:wget) {Remove-Item Alias:wget}
 
 # 使用 oh-my-posh
 oh-my-posh init pwsh --config ~\.blue-owl.omp.json | Invoke-Expression
+
+function hosts { nvim c:\windows\system32\drivers\etc\hosts }
+
+function pa { php artisan @Args }
+
