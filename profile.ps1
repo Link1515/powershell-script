@@ -23,5 +23,7 @@ oh-my-posh init pwsh --config ~\.blue-owl.omp.json | Invoke-Expression
 
 function hosts { nvim c:\windows\system32\drivers\etc\hosts }
 
+function sysprop { SystemPropertiesAdvanced }
+
 function pa { php artisan @Args }
 
