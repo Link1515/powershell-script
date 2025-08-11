@@ -27,3 +27,31 @@ function sysprop { SystemPropertiesAdvanced }
 
 function pa { php artisan @Args }
 
+function sudo
+{
+  if ($args.Count -gt 0)
+  {
+    $lastIndex = $args.Count-1
+    $programName = $args[0]
+    if ($args.Count -gt 1)
+    {
+      $programArgs = $args[1 .. $lastIndex]
+    }
+    Start-Process $programName -Verb runAs -ArgumentList $programArgs
+  }
+  else
+  {
+    if ($env:WT_SESSION) {
+      Start-Process "wt.exe" -Verb runAs
+    }
+    elseif ($PSVersionTable.PSEdition -eq 'Core')
+    {
+      Start-Process "$PSHOME\pwsh.exe" -Verb runAs
+    }
+    elseif ($PSVersionTable.PSEdition -eq 'Desktop')
+    {
+      Start-Process "$PSHOME\powershell.exe" -Verb runAs
+    }
+  }
+}
+
